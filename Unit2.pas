@@ -135,14 +135,19 @@ end;
 
 procedure TForm2.AdvSpinEdit1KeyUp(Sender: TObject; var Key: Word;
   Shift: TShiftState);
+var p:integer;
+    s:string;
 begin
 //ShowMessage(IntToStr(Key));
 
 if (key=VK_DECIMAL) or (key=190) or (key=191) or (key=188) then
   if pos(',' , TAdvSpinEdit(Sender).Text)=0 then
     begin
-      TAdvSpinEdit(Sender).Text:=TAdvSpinEdit(Sender).Text+',';
-      TAdvSpinEdit(Sender).SelStart:=Length(TAdvSpinEdit(Sender).Text);
+      p:= TAdvSpinEdit(Sender).GetSelStart+1;
+      s:= TAdvSpinEdit(Sender).Text;
+      Insert(',', s, p);
+      TAdvSpinEdit(Sender).Text:=s;   //TAdvSpinEdit(Sender).Text+',';
+      TAdvSpinEdit(Sender).SelStart:=p;  //Length(TAdvSpinEdit(Sender).Text);
     end;
 end;
 
