@@ -5,7 +5,7 @@ object Form2: TForm2
   BorderStyle = bsSingle
   Caption = #1043#1048#1057'-'#1082#1072#1083#1100#1082#1091#1083#1103#1090#1086#1088
   ClientHeight = 115
-  ClientWidth = 502
+  ClientWidth = 608
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
@@ -14,6 +14,7 @@ object Form2: TForm2
   Font.Style = []
   OldCreateOrder = False
   Position = poDesigned
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object Label5: TLabel
@@ -51,16 +52,17 @@ object Form2: TForm2
     WordWrap = True
   end
   object Label6: TLabel
-    Left = 216
+    Left = 223
     Top = 8
-    Width = 140
+    Width = 234
     Height = 13
-    Caption = #1043#1088#1072#1076#1091#1089#1099', '#1084#1080#1085#1091#1090#1099', '#1089#1077#1082#1091#1085#1076#1099
+    AutoSize = False
+    Caption = #1043#1088#1072#1076#1091#1089#1099'     '#1084#1080#1085#1091#1090#1099'                   '#1089#1077#1082#1091#1085#1076#1099
     WordWrap = True
   end
   object Label1: TLabel
-    Left = 163
-    Top = 88
+    Left = 344
+    Top = 87
     Width = 110
     Height = 13
     Caption = #1054#1058#1050#1056#1067#1058#1068' '#1053#1040' '#1050#1040#1056#1058#1045
@@ -72,8 +74,8 @@ object Form2: TForm2
     ParentFont = False
   end
   object AdvSpinEdit3: TAdvSpinEdit
-    Left = 216
-    Top = 27
+    Left = 223
+    Top = 26
     Width = 50
     Height = 21
     Value = 58
@@ -89,15 +91,17 @@ object Form2: TForm2
     LabelFont.Style = []
     MaxValue = 90
     MinValue = -90
+    SpinType = sptFloat
     TabOrder = 0
     Visible = True
-    Version = '1.8.3.0'
+    Version = '1.9.0.1'
     OnChange = AdvSpinEdit3Change
+    OnKeyUp = AdvSpinEdit1KeyUp
   end
   object AdvSpinEdit4: TAdvSpinEdit
-    Left = 272
-    Top = 27
-    Width = 50
+    Left = 279
+    Top = 26
+    Width = 90
     Height = 21
     Value = 36
     FloatValue = 36.000000000000000000
@@ -111,15 +115,17 @@ object Form2: TForm2
     LabelFont.Name = 'Tahoma'
     LabelFont.Style = []
     MaxValue = 60
+    SpinType = sptFloat
     TabOrder = 1
     Visible = True
-    Version = '1.8.3.0'
+    Version = '1.9.0.1'
     OnChange = AdvSpinEdit3Change
+    OnKeyUp = AdvSpinEdit1KeyUp
   end
   object AdvSpinEdit5: TAdvSpinEdit
-    Left = 328
-    Top = 27
-    Width = 50
+    Left = 375
+    Top = 26
+    Width = 93
     Height = 21
     Value = 13
     FloatValue = 13.000000000000000000
@@ -134,14 +140,16 @@ object Form2: TForm2
     LabelFont.Name = 'Tahoma'
     LabelFont.Style = []
     MaxValue = 60
+    SpinType = sptFloat
     TabOrder = 2
     Visible = True
-    Version = '1.8.3.0'
+    Version = '1.9.0.1'
     OnChange = AdvSpinEdit3Change
+    OnKeyUp = AdvSpinEdit1KeyUp
   end
   object AdvSpinEdit6: TAdvSpinEdit
-    Left = 216
-    Top = 55
+    Left = 223
+    Top = 54
     Width = 50
     Height = 21
     Value = 49
@@ -159,15 +167,17 @@ object Form2: TForm2
     MinValue = -180
     MinFloatValue = -180.000000000000000000
     MaxFloatValue = 180.000000000000000000
+    SpinType = sptFloat
     TabOrder = 3
     Visible = True
-    Version = '1.8.3.0'
+    Version = '1.9.0.1'
     OnChange = AdvSpinEdit6Change
+    OnKeyUp = AdvSpinEdit1KeyUp
   end
   object AdvSpinEdit7: TAdvSpinEdit
-    Left = 272
-    Top = 55
-    Width = 50
+    Left = 279
+    Top = 54
+    Width = 90
     Height = 21
     Value = 40
     FloatValue = 40.000000000000000000
@@ -182,15 +192,17 @@ object Form2: TForm2
     LabelFont.Style = []
     MaxValue = 60
     MaxFloatValue = 60.000000000000000000
+    SpinType = sptFloat
     TabOrder = 4
     Visible = True
-    Version = '1.8.3.0'
+    Version = '1.9.0.1'
     OnChange = AdvSpinEdit6Change
+    OnKeyUp = AdvSpinEdit1KeyUp
   end
   object AdvSpinEdit8: TAdvSpinEdit
-    Left = 328
-    Top = 55
-    Width = 50
+    Left = 375
+    Top = 56
+    Width = 93
     Height = 21
     Value = 5
     FloatValue = 5.000000000000000000
@@ -206,13 +218,15 @@ object Form2: TForm2
     LabelFont.Style = []
     MaxValue = 60
     MaxFloatValue = 60.000000000000000000
+    SpinType = sptFloat
     TabOrder = 5
     Visible = True
-    Version = '1.8.3.0'
+    Version = '1.9.0.1'
     OnChange = AdvSpinEdit6Change
+    OnKeyUp = AdvSpinEdit1KeyUp
   end
   object Edit1: TEdit
-    Left = 429
+    Left = 528
     Top = 27
     Width = 63
     Height = 21
@@ -220,7 +234,7 @@ object Form2: TForm2
     Text = '58'#176'36'#8242'13'#8243'N'
   end
   object Edit2: TEdit
-    Left = 429
+    Left = 528
     Top = 54
     Width = 63
     Height = 21
@@ -228,7 +242,7 @@ object Form2: TForm2
     Text = '49'#176'40'#8242'5'#8243'E'
   end
   object Button1: TButton
-    Left = 384
+    Left = 483
     Top = 25
     Width = 25
     Height = 25
@@ -237,7 +251,7 @@ object Form2: TForm2
     OnClick = Button1Click
   end
   object Button2: TButton
-    Left = 384
+    Left = 483
     Top = 52
     Width = 25
     Height = 25
@@ -248,12 +262,13 @@ object Form2: TForm2
   object AdvSpinEdit1: TAdvSpinEdit
     Left = 88
     Top = 27
-    Width = 81
+    Width = 105
     Height = 21
     Value = 0
     FloatValue = 58.603581000000000000
     HexDigits = 0
     HexValue = -60803711
+    EditAlign = eaRight
     IncrementFloat = 0.100000000000000000
     IncrementFloatPage = 0.100000000000000000
     LabelFont.Charset = DEFAULT_CHARSET
@@ -261,23 +276,25 @@ object Form2: TForm2
     LabelFont.Height = -11
     LabelFont.Name = 'Tahoma'
     LabelFont.Style = []
-    MinFloatValue = -90.000000000000000000
-    MaxFloatValue = 90.000000000000000000
+    MinFloatValue = -90.099999999999990000
+    MaxFloatValue = 90.099999999999990000
     SpinType = sptFloat
     TabOrder = 10
     Visible = True
-    Version = '1.8.3.0'
+    Version = '1.9.0.1'
     OnChange = AdvSpinEdit1Change
+    OnKeyUp = AdvSpinEdit1KeyUp
   end
   object AdvSpinEdit2: TAdvSpinEdit
     Left = 88
-    Top = 55
-    Width = 81
+    Top = 54
+    Width = 105
     Height = 21
     Value = 0
     FloatValue = 49.668023000000000000
     HexDigits = 0
     HexValue = -60391389
+    EditAlign = eaRight
     IncrementFloat = 0.100000000000000000
     IncrementFloatPage = 0.100000000000000000
     LabelFont.Charset = DEFAULT_CHARSET
@@ -290,12 +307,13 @@ object Form2: TForm2
     SpinType = sptFloat
     TabOrder = 11
     Visible = True
-    Version = '1.8.3.0'
+    Version = '1.9.0.1'
     OnChange = AdvSpinEdit2Change
+    OnKeyUp = AdvSpinEdit1KeyUp
   end
   object Button3: TButton
-    Left = 347
-    Top = 83
+    Left = 528
+    Top = 82
     Width = 62
     Height = 25
     Caption = #1071#1085#1076#1077#1082#1089
@@ -303,8 +321,8 @@ object Form2: TForm2
     OnClick = Button3Click
   end
   object Button4: TButton
-    Left = 279
-    Top = 83
+    Left = 460
+    Top = 82
     Width = 62
     Height = 25
     Caption = 'Google'

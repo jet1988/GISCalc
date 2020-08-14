@@ -46,6 +46,9 @@ type
     procedure Doldota;
     procedure Button3Click(Sender: TObject);
     procedure Button4Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure AdvSpinEdit1KeyUp(Sender: TObject; var Key: Word;
+      Shift: TShiftState);
   private
     { Private declarations }
 
@@ -86,15 +89,20 @@ begin
 Edit2.Text:=AdvSpinEdit6.Text+'°'+AdvSpinEdit7.Text+'′'+AdvSpinEdit8.Text+'′′'+Button2.Caption;
 end;
 
+procedure TForm2.FormCreate(Sender: TObject);
+begin
+//AdvSpinEdit1.
+end;
+
 Function DDDToDDMMSS(ddd:Real):TKoord;
-var mmm:real;
+  var mmm: real;
 begin
 Result.dd:=Trunc(abs(ddd));
 Result.mm:= Trunc((abs(ddd)-Result.dd)*60);
 Result.ss:=Round(((abs(ddd)-Result.dd)*60-Result.mm)*60);
 end;
 
-Function DDMMSSToDDD(dd,mm,ss:Integer):Real;
+Function DDMMSSToDDD(dd,mm,ss:real):Real;
 begin
 //Result:=RoundTo(dd+(mm/60)+(ss/3600),-7);
 Result:=dd+(mm/60)+(ss/3600);
@@ -113,6 +121,19 @@ AdvSpinEdit5.Value:=koord.ss;
 Shirota;
 end;
 
+procedure TForm2.AdvSpinEdit1KeyUp(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+//ShowMessage(IntToStr(Key));
+
+if (key=VK_DECIMAL) or (key=190) or (key=191) or (key=188) then
+  if pos(',' , TAdvSpinEdit(Sender).Text)=0 then
+    begin
+      TAdvSpinEdit(Sender).Text:=TAdvSpinEdit(Sender).Text+',';
+      TAdvSpinEdit(Sender).SelStart:=Length(TAdvSpinEdit(Sender).Text);
+    end;
+end;
+
 procedure TForm2.AdvSpinEdit2Change(Sender: TObject);
 var koord:TKoord;
 begin
@@ -128,14 +149,14 @@ end;
 procedure TForm2.AdvSpinEdit3Change(Sender: TObject);
 begin
 if AdvSpinEdit1.Focused then Exit;
-AdvSpinEdit1.FloatValue:=DDMMSSToDDD(AdvSpinEdit3.Value,AdvSpinEdit4.Value,AdvSpinEdit5.Value);
+AdvSpinEdit1.FloatValue:=DDMMSSToDDD(AdvSpinEdit3.FloatValue,AdvSpinEdit4.FloatValue,AdvSpinEdit5.FloatValue);
 Shirota;
 end;
 
 procedure TForm2.AdvSpinEdit6Change(Sender: TObject);
 begin
 if AdvSpinEdit2.Focused then Exit;
-AdvSpinEdit2.FloatValue:=DDMMSSToDDD(AdvSpinEdit6.Value,AdvSpinEdit7.Value,AdvSpinEdit8.Value);
+AdvSpinEdit2.FloatValue:=DDMMSSToDDD(AdvSpinEdit6.FloatValue,AdvSpinEdit7.FloatValue,AdvSpinEdit8.FloatValue);
 Doldota;
 end;
 
