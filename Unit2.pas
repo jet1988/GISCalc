@@ -36,6 +36,7 @@ type
     Button3: TButton;
     Button4: TButton;
     Label1: TLabel;
+    CheckBox1: TCheckBox;
     procedure Button1Click(Sender: TObject);
     procedure Button2Click(Sender: TObject);
     procedure AdvSpinEdit1Change(Sender: TObject);
@@ -49,6 +50,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure AdvSpinEdit1KeyUp(Sender: TObject; var Key: Word;
       Shift: TShiftState);
+    procedure CheckBox1Click(Sender: TObject);
   private
     { Private declarations }
 
@@ -80,13 +82,23 @@ begin
 end;
 
 procedure TForm2.Shirota;
+var t, m, s:string;
 begin
-Edit1.Text:=AdvSpinEdit3.Text+'°'+AdvSpinEdit4.Text+'′'+AdvSpinEdit5.Text+'′′'+Button1.Caption;
+t:= inttostr(Round(AdvSpinEdit3.FloatValue));
+m:= inttostr(Round(AdvSpinEdit4.FloatValue));
+s:= inttostr(Round(AdvSpinEdit5.FloatValue));
+Edit1.Text:=t+'°'+m+''''+s+''''''+Button1.Caption;
+//Edit1.Text:=AdvSpinEdit3.Text+'°'+AdvSpinEdit4.Text+''''+AdvSpinEdit5.Text+''''''+Button1.Caption;
 end;
 
 procedure TForm2.Doldota;
+var t, m, s:string;
 begin
-Edit2.Text:=AdvSpinEdit6.Text+'°'+AdvSpinEdit7.Text+'′'+AdvSpinEdit8.Text+'′′'+Button2.Caption;
+t:= inttostr(Round(AdvSpinEdit6.FloatValue));
+m:= inttostr(Round(AdvSpinEdit7.FloatValue));
+s:= inttostr(Round(AdvSpinEdit8.FloatValue));
+Edit2.Text:=t+'°'+m+''''+s+''''''+Button2.Caption;
+//Edit2.Text:=AdvSpinEdit6.Text+'°'+AdvSpinEdit7.Text+''''+AdvSpinEdit8.Text+''''''+Button2.Caption;
 end;
 
 procedure TForm2.FormCreate(Sender: TObject);
@@ -186,10 +198,20 @@ var url,s,d:string;
 begin
 //url:='https://maps.google.com/?hl=ru&q=loc:'+AdvSpinEdit2.Text+'%2C'+AdvSpinEdit1.Text;
     //https://www.google.ru/maps/place/54°29'3''N+72°52'44''E/
-s:=AdvSpinEdit3.Text+'°'+AdvSpinEdit4.Text+''''+AdvSpinEdit5.Text+''''''+Button1.Caption;
+{s:=AdvSpinEdit3.Text+'°'+AdvSpinEdit4.Text+''''+AdvSpinEdit5.Text+''''''+Button1.Caption;
 d:=AdvSpinEdit6.Text+'°'+AdvSpinEdit7.Text+''''+AdvSpinEdit8.Text+''''''+Button2.Caption;
 url:='https://www.google.ru/maps/place/'+s+'+'+d;
+}
+url:='https://www.google.ru/maps/place/'+Edit1.Text+'+'+Edit2.Text;
 ShellExecute( Handle, 'open', Pchar(url), nil, nil, SW_NORMAL );
+end;
+
+procedure TForm2.CheckBox1Click(Sender: TObject);
+begin
+if CheckBox1.Checked then
+  Form2.FormStyle:=fsStayOnTop
+  else
+    Form2.FormStyle:=fsNormal;
 end;
 
 end.

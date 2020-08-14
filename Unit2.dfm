@@ -329,4 +329,13 @@ object Form2: TForm2
     TabOrder = 13
     OnClick = Button4Click
   end
+  object CheckBox1: TCheckBox
+    Left = 8
+    Top = 90
+    Width = 117
+    Height = 17
+    Caption = #1055#1086#1074#1077#1088#1093' '#1074#1089#1077#1093' '#1086#1082#1086#1085
+    TabOrder = 14
+    OnClick = CheckBox1Click
+  end
 end
